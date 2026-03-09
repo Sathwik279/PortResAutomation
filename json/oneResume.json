@@ -1,14 +1,17 @@
 {
-    "profile":{
+    "profile":[
+        {
         "name":"sathwik",
         "email":"ssathwik31831@gmail.com",
         "ph":"9063246116"
-    },
+        }
+    ],
     "education":[
         {
             "course":"B.Tech",
             "College":"vrsec",
-            "duration":"2022-2026"
+            "duration":"2022-2026",
+            "cgpa":"7.8"
         },
         {
             "course":"Intermediate",
@@ -24,18 +27,25 @@
         }
     ],
     "skills":[
-        "Java",
-        "Python",
-        "C"
+        {
+            "skillname":"java"
+        },
+        {
+            "skillname":"python"
+        }
     ],
     "projects":[
         {
             "title":"TodoRevamp",
-            "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "description":"Lorem Ipsum is",
+            "githubRepo":"https://github.com/Sathwik279/TodoApplication-Web-.git"
+        
         },
         {
             "title":"Wiretest",
-            "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "description":"Lorem Ipsum is simply",
+            "githubRepo":"https://github.com/Sathwik279/railway_seat_booking_java_version"
+
         }
     ],
     "codingprofile":[
