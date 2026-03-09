@@ -1,0 +1,58 @@
+{
+    "profile":{
+        "name":"sathwik",
+        "email":"ssathwik31831@gmail.com",
+        "ph":"9063246116"
+    },
+    "education":[
+        {
+            "course":"B.Tech",
+            "College":"vrsec",
+            "duration":"2022-2026"
+        },
+        {
+            "course":"Intermediate",
+            "college":"sri chaitanya",
+            "duration":"2019-2021"
+        }
+    ],
+    "experience":[
+        {
+            "Role":"intern",
+            "company":"deepmediq",
+            "duration":"15-2-25 - 15-3-25"
+        }
+    ],
+    "skills":[
+        "Java",
+        "Python",
+        "C"
+    ],
+    "projects":[
+        {
+            "title":"TodoRevamp",
+            "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        },
+        {
+            "title":"Wiretest",
+            "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
+    ],
+    "codingprofile":[
+        {
+            "platform":"leetcode",
+            "contestrnak":"1575"
+        }
+    ],
+    "certifications":[
+        {
+            "title":"ccna from cisco"
+        },
+        {
+            "title":"Android dev from udemy"
+        },
+        {
+            "title":"java from sololearn"
+        }
+    ]
+}
