@@ -1,29 +1,72 @@
 *{
-    padding:0.5em;
+    padding:0.2em;
+
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
 }
 
 body{
-    border:2px solid black;
+    border:2px dashed slateblue;
+    border-radius: 1em;
     display:flex;
     flex-direction: column;
-}
-
-#footer{
-    border:2px solid seagreen;
+    align-items: center;
+    justify-content: center;
+    padding-left:7rem;
+    padding-right:7rem;
+    margin:3em;
 }
 
 h1{
     border:2px solid salmon;
     border-radius: 1em;
-    background-color: rgba(229, 150, 200, 0.275)
+    padding:0.5em;
+    background-color: rgba(229, 150, 200, 0.275);
+    width: 600px;
+    text-align: center;
+    transition: all 0.3s ease; /* Makes the color change smooth */
+    cursor: pointer;
+
+}
+h1:hover,section h2:hover{
+    background-color: rgba(229, 150, 200, 0.6); /* Deepens the pink */
+    border-color: slateblue; /* Shifts border to match your theme */
+    box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3); /* Adds a soft glow */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+.object:hover{
+    border-left:none;
+    border-right:2px solid rgba(250, 128, 114, 0.358);
+
 }
 
 h2{
     text-align: center;
+    transition: all 0.7s ease; /* Makes the color change smooth */
+    cursor: pointer;
 }
 
+section{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .object{
-    border:2px solid black;
-    border-radius: 3em;
+    border-left:2px solid rgba(250, 128, 114, 0.53);
     margin-bottom:1em;
+    border-radius: 2em;
+    padding:0.5em;
+    width:90%;
+    transition: all 0.3s ease; /* Makes the color change smooth */
+    cursor: pointer;
+}
+
+
+.object p,.object h3{
+    line-height: 1.6;
 }

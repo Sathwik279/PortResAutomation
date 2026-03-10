@@ -27,41 +27,64 @@ const genDiv = (classList)=>{
     
     return div;
 }
+const genLink = (parent,label, url)=>{
+    if(!url)return;
+    const p = document.createElement('p');
+    p.innerHTML = `<strong>${label}:</strong><a href="${url}" target="_blank">View Project</a>`;
+    parent.appendChild(p);
+}
+const profObjTemp = (parent,object)=>{
+    genH3(parent,'Name',object.name);
+    genH3(parent,'Email',object.email);
+    genH3(parent,'Ph',object.ph);
+}
 const eduObjTemp = (parent,object)=>{
-    genH3(parent,'college',object.college);
-    genP(parent,'course',object.course);        
+    genH3(parent,'College',object.college);
+    genP(parent,'Course',object.course);
+    genP(parent,'Cgpa',object.cgpa);
+    genP(parent,'Marks',object.marks);        
 }
 const projObjTemp = (parent,object)=>{
-    genH3(parent,'title:',object.title);
-    genP(parent,'description:',object.description);     
-    genP(parent,'github:',object.githubRepo);        
+    genH3(parent,'Title',object.title);
+    object.description.forEach((description)=>{
+    genP(parent,'',description);     
+    })
+    genLink(parent,'Github',object.githubRepo);        
    
 }
 const expObjTemp = (parent,object)=>{
-    genH3(parent,'Role:',object.role);
-    genP(parent,'Company:',object.company);       
-    genP(parent,'Duration:',object.duration);        
+    genH3(parent,'Role',object.role);
+    genP(parent,'Company',object.company);       
+    genP(parent,'Duration',object.duration);        
  
 }
 const skillObjTemp = (parent,object)=>{
-    genH3(parent,'Skill:',object.skillname);
+    console.log(object);
+    Object.keys(object).forEach((key)=>{
+    let arr = object[key];
+    genP(parent,key,arr.join(','));
+    })
 }
 const codingObjTemp = (parent,object)=>{
-    genH3(parent,'Platform:',object.platform);
+    genH3(parent,'Platform',object.platform);
     genP(parent,'Contest Rank',object.contestRank);        
 }
 const certifObjTemp = (parent,object)=>{
     genH3(parent,null,object.title);
 }
-
+const achieveObjTemp = (parent,object)=>{
+    genH3(parent,null,object.title)
+}
 
 const registry = {
+    'profile':profObjTemp,
     'education':eduObjTemp,
     'experience':expObjTemp,
     'skills':skillObjTemp,
     'projects':projObjTemp,
-    'codingprofile':codingObjTemp,
-    'certifications':certifObjTemp
+    'coding':codingObjTemp,
+    'certifications':certifObjTemp,
+    'achievements':achieveObjTemp
 }
 
 const rec = (input) => {
@@ -98,12 +121,12 @@ fetch('../json/oneResume.json')
 const secLaydown = (input) => {
     Object.keys(input).forEach((key) => {
         const section = document.createElement('section');
+        section.classList.add(key);
         const arrOfObjects = input[key]; 
         const sectionHeading = document.createElement('h2');
-        sectionHeading.textContent = key;
+        sectionHeading.textContent = key.toUpperCase();
         section.appendChild(sectionHeading)
         fillDetails(key,section,arrOfObjects);
-        
         content.appendChild(section)
     });
 }
@@ -116,7 +139,7 @@ function fillDetails(key,parent,arrOfObjects) {
         return;
     }
     arrOfObjects.forEach((object) => {
-        const curObjContainer = genDiv(['object',key]) 
+        const curObjContainer = genDiv(['object']) 
         template(curObjContainer,object);
         parent.appendChild(curObjContainer)
     })
