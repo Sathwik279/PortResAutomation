@@ -8,8 +8,8 @@
     ],
     "education":[
         {
+            "college":"vrsec",
             "course":"B.Tech",
-            "College":"vrsec",
             "duration":"2022-2026",
             "cgpa":"7.8"
         },
@@ -51,7 +51,7 @@
     "codingprofile":[
         {
             "platform":"leetcode",
-            "contestrnak":"1575"
+            "contestrank":"1575"
         }
     ],
     "certifications":[
