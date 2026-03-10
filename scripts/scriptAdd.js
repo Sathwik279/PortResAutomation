@@ -1,6 +1,15 @@
 // global reusables
 const content = document.getElementById("content")
-
+const iconMap = {
+    'name': 'fa-solid fa-user',
+    'email': 'fa-solid fa-envelope',
+    'ph': 'fa-solid fa-phone',
+    'linkedin': 'fa-brands fa-linkedin',
+    'github': 'fa-brands fa-github'
+};
+function capitalize(str){
+    return str.charAt(0).toUpperCase()+str.slice(1);
+}
 const genH3 = (parent,label,value)=>{
      if(value===undefined || value===null)return;
 
@@ -11,12 +20,25 @@ const genH3 = (parent,label,value)=>{
     parent.appendChild(h3);
 }
 const genP = (parent,label,value)=>{
+    // console.log(label)
 
     if(value===undefined || value===null)return;
 
     const labelText = label? `<strong>${label}: </strong>`:'';
     const p = document.createElement('p');
     p.innerHTML = `${labelText}${value}`;
+
+    parent.appendChild(p);
+}
+
+const genBulletP = (parent,label,value)=>{
+    // console.log(label)
+
+    if(value===undefined || value===null)return;
+
+    const labelText = label? `<strong>${label}: </strong>`:'';
+    const p = document.createElement('p');
+    p.innerHTML = `&bull; ${labelText}${value}`;
 
     parent.appendChild(p);
 }
@@ -27,53 +49,87 @@ const genDiv = (classList)=>{
     
     return div;
 }
-const genLink = (parent,label, url)=>{
+const wrapDiv = (parent,content,classList)=>{
+    const div = document.createElement('div');
+    if(classList.length!==0){
+        div.classList.add(...classList)
+    }
+    div.appendChild(content);
+    parent.appendChild(div);
+}
+const genLink = (parent,label,url)=>{
     if(!url)return;
+    const iconHTML = iconMap[label] ? `<i class="${iconMap[label]}"></i> ` : `${label}`;
     const p = document.createElement('p');
-    p.innerHTML = `<strong>${label}:</strong><a href="${url}" target="_blank">View Project</a>`;
+    p.innerHTML = `<a href="${url}" target="_blank">${iconHTML}${label}</a>`;
     parent.appendChild(p);
 }
 const profObjTemp = (parent,object)=>{
-    genH3(parent,'Name',object.name);
-    genH3(parent,'Email',object.email);
-    genH3(parent,'Ph',object.ph);
+    const socialDiv = document.createElement('div');
+    socialDiv.classList.add('social');
+    genLink(socialDiv,'linkedin',object['linkedin'])
+    genLink(socialDiv,'github',object['github'])
+
+    if(object.image){
+        const imgDiv = document.createElement('div');
+        imgDiv.innerHTML = `<img src="${object.image}" alt='hello' class='profile-pic'>`;
+        parent.appendChild(imgDiv)
+    }
+        
+    const nameDiv = document.createElement('div');
+    nameDiv.classList.add('name')
+    genP(nameDiv,'Name',object['Name'])
+    genP(nameDiv,'Email',object['email'])
+    genP(nameDiv,'Ph',object['ph'])
+    const nameAndSocialDiv = document.createElement('div')
+    nameAndSocialDiv.classList.add('nameAndSocial');
+    nameAndSocialDiv.appendChild(nameDiv)
+    nameAndSocialDiv.appendChild(socialDiv)
+    parent.appendChild(nameAndSocialDiv)
+
 }
 const eduObjTemp = (parent,object)=>{
-    genH3(parent,'College',object.college);
+    genP(parent,'College',object.college);
     genP(parent,'Course',object.course);
     genP(parent,'Cgpa',object.cgpa);
-    genP(parent,'Marks',object.marks);        
+    genP(parent,'Marks',object.marks);    
+    genP(parent,'Duration',object.duration);
 }
 const projObjTemp = (parent,object)=>{
-    genH3(parent,'Title',object.title);
+    genP(parent,'Title',object.title);
+    genP(parent,'Description','');
     object.description.forEach((description)=>{
-    genP(parent,'',description);     
+        genP(parent,'',description);     
     })
-    genLink(parent,'Github',object.githubRepo);        
+    genLink(parent,'github',object.githubRepo);        
    
 }
 const expObjTemp = (parent,object)=>{
-    genH3(parent,'Role',object.role);
-    genP(parent,'Company',object.company);       
-    genP(parent,'Duration',object.duration);        
- 
+    genP(parent,'Role',object.role);
+    genP(parent,'company',object.comapany);
+    genP(parent,'Description','');
+    object.description.forEach((description)=>{
+        genP(parent,'',description)
+    })
+    genP(parent,"Duration",object.duration);
+    genP(parent,"Location",object.location)
 }
 const skillObjTemp = (parent,object)=>{
-    console.log(object);
+    // console.log(object);
     Object.keys(object).forEach((key)=>{
     let arr = object[key];
     genP(parent,key,arr.join(','));
     })
 }
 const codingObjTemp = (parent,object)=>{
-    genH3(parent,'Platform',object.platform);
-    genP(parent,'Contest Rank',object.contestRank);        
+    genP(parent,'Platform',object.platform);
+    genP(parent,'Contest Rank',object.contestrank);        
 }
 const certifObjTemp = (parent,object)=>{
-    genH3(parent,null,object.title);
+    genBulletP(parent,null,object.title);
 }
 const achieveObjTemp = (parent,object)=>{
-    genH3(parent,null,object.title)
+    genBulletP(parent,null,object.title)
 }
 
 const registry = {
@@ -126,7 +182,11 @@ const secLaydown = (input) => {
         const sectionHeading = document.createElement('h2');
         sectionHeading.textContent = key.toUpperCase();
         section.appendChild(sectionHeading)
-        fillDetails(key,section,arrOfObjects);
+        const objectsContainer = document.createElement('div');
+        objectsContainer.classList.add('objectsContainer');
+
+        fillDetails(key,objectsContainer,arrOfObjects);
+        section.appendChild(objectsContainer)
         content.appendChild(section)
     });
 }
@@ -143,4 +203,20 @@ function fillDetails(key,parent,arrOfObjects) {
         template(curObjContainer,object);
         parent.appendChild(curObjContainer)
     })
+}
+
+
+function generatePDF() {
+    const element = document.getElementById('content');
+    
+    const options = {
+        margin:       0.5,
+        filename:     'My_Professional_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 }, // Increases resolution for clear text
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage
+    html2pdf().set(options).from(element).save();
 }

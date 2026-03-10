@@ -1,10 +1,9 @@
 *{
-    padding:0.2em;
-
+    padding:0.25em;
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    font-style: italic;
+    box-sizing: border-box;
 }
 
 body{
@@ -26,27 +25,27 @@ h1{
     background-color: rgba(229, 150, 200, 0.275);
     width: 600px;
     text-align: center;
-    transition: all 0.3s ease; /* Makes the color change smooth */
-    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
 }
-h1:hover,section h2:hover{
-    background-color: rgba(229, 150, 200, 0.6); /* Deepens the pink */
-    border-color: slateblue; /* Shifts border to match your theme */
-    box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3); /* Adds a soft glow */
-    transform: translateY(-2px); /* Slight lift effect */
-}
-.object:hover{
-    border-left:none;
-    border-right:2px solid rgba(250, 128, 114, 0.358);
 
+h1:hover{
+    box-shadow: 0.5em 0.5em;
 }
+
 
 h2{
     text-align: center;
-    transition: all 0.7s ease; /* Makes the color change smooth */
-    cursor: pointer;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
+
+h2:hover{
+    border:2px dashed salmon;
+    border-radius: 0.7em;
+    transform: translateY(-3px);
+    box-shadow: 0.3em 0.3em rgba(235, 56, 148, 0.627);
+}
+
 
 section{
     display:flex;
@@ -55,18 +54,104 @@ section{
     justify-content: center;
 }
 
-
 .object{
-    border-left:2px solid rgba(250, 128, 114, 0.53);
-    margin-bottom:1em;
     border-radius: 2em;
-    padding:0.5em;
-    width:90%;
-    transition: all 0.3s ease; /* Makes the color change smooth */
-    cursor: pointer;
+    width:100%;
 }
 
 
 .object p,.object h3{
-    line-height: 1.6;
+    line-height: 1.8;
+}
+
+strong{
+    border:2px solid rgba(190, 15, 146, 0.332);
+    border-radius: 0.7em;
+    margin-right:0.4em;
+    font-size:1em;
+    font-weight: 800;
+    transition: transform 0.2s ease, box-shadow 0.6s ease;
+
+}
+
+p:hover{
+    strong{
+        border:3px dashed rgb(10, 200, 35);
+        box-shadow: 0.3em 0.3em;
+
+    }
+}
+
+.social{
+    display: flex;
+    flex-direction: row;
+    padding-top:0px;
+    margin-top:0px;
+}
+.social p{
+    padding-top:0px;
+    margin-top:0px;
+}
+.name p{
+    margin-bottom: 0px;
+}
+
+.profile-pic {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%; /* Makes it a circle */
+    object-fit: cover; /* Ensures the image doesn't stretch */
+    border: 3px solid rgba(190, 15, 146, 0.5); /* Matches your strong tag border */
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(106, 90, 205, 0.2);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+
+}
+.profile-pic:hover {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%; /* Makes it a circle */
+    object-fit: cover; /* Ensures the image doesn't stretch */
+    border: 3px solid rgba(24, 151, 190, 0.5); /* Matches your strong tag border */
+    margin-bottom: 10px;
+    box-shadow: 0.4em 0.4em 400em 2em rgb(215, 98, 159);
+}
+
+.profile .object{
+    display: flex;
+    flex-direction: row;
+}
+
+.coding .objectsContainer{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}
+
+.profile p{
+    margin-top:0px;
+}
+
+.skills p, .certifications p,.achievements p{
+    margin: 0px;
+}
+
+.achievements p, .certifications p{
+    border: 2px solid rgba(225, 149, 191, 0.425);
+    border-radius: 0.5em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.achievements p:hover, .certifications p:hover{
+    border: 2px solid rgba(195, 91, 148, 0.655);
+    border-radius: 0.7em;
+    transform: translateY(-3px);
+    box-shadow: 0.3em 0.3em rgba(235, 56, 148, 0.627);
+}
+
+
+
+.certifications .objectsContainer{
+    display:grid;
+    grid-template-columns: 2fr 2fr;
 }

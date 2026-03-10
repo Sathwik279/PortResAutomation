@@ -1,28 +1,22 @@
 {
     "profile":[
         {
-        "name":"Sudikonda Sri Srinivasa Sathwik",
-        "email":"ssathwik31831@gmail.com",
-        "ph":"9063246116",
+        "Name":"Sudikonda Sri Srinivasa Sathwik",
         "linkedin":"https://www.linkedin.com/in/sathwik-sudikonda/",
-        "github":"https://github.com/Sathwik279"
+        "github":"https://github.com/Sathwik279",
+        "image":"../images/sathwik.jpg",
+        "email":"ssathwik31831@gmail.com",
+        "ph":"9063246116"
         }
     ],
     "education":[
         {
-            "college":"Siddhartha Engineering College",
+            "college":"Velagapudi Ramakrishna Siddhartha Engineering College",
             "course":"B.Tech in Computer Science and Engineering",
             "duration":"2022-2026",
-            "cgpa":"7.8",
+            "cgpa":"8.86",
             "location":"Vijayawada,India"
 
-        },
-        {
-            "college":"Sri Chaitanya Junior College",
-            "course":"Intermediate (MPC)",
-            "marks":"962",
-            "duration":"2019-2021",
-            "location":"Rajahmundry,India"
         }
     ],
     "projects":[
@@ -43,7 +37,8 @@
         {
             "role":"Application Developer Intern",
             "company":"DeepMedIQ",
-            "duration":"15-2-25 - 15-3-25",
+            "description":["Developed an Android-based medical assistant application using Kotlin and Jetpack Compose following MVVM architecture principles"," Integrated REST APIs using Retrofit, implemented local data persistence with Room, and managed dependency injection using Hilt"],
+            "duration":"15/2/25 - 15/3/25",
             "location":"Remote"
         }
     ],
