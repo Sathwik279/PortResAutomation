@@ -99,7 +99,7 @@ const genLink = (parent,label,url)=>{
     if(label==='email'||label==='ph'){
         return genP(parent,iconHTML,url);
     }
-    p.innerHTML = `<a href="${url}" target="_blank">${iconHTML}${label}</a>`;
+    p.innerHTML = `<a href="${url}" target="_blank">${iconHTML}</a>`;
     parent.appendChild(p);
 }
 
@@ -240,7 +240,9 @@ const expObjTemp = (parent,object)=>{
 
 const aboutObjTemp = (parent,object)=>{
     parent.classList.add('detail-card');
-    genH3(parent,'',object.about);
+    object.about.forEach((str)=>{
+        genH3(parent,'',str);
+    })
 }
 
 const skillObjTemp = (parent,object)=>{
