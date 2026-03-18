@@ -6,7 +6,8 @@ const iconMap = {
     'email': 'fa-solid fa-envelope',
     'ph': 'fa-solid fa-phone',
     'linkedin': 'fa-brands fa-linkedin',
-    'github': 'fa-brands fa-github'
+    'github': 'fa-brands fa-github',
+    'deployment':'fa-solid fa-globe'
 };
 const sectionDisplayNames = {
     contact: "CONTACT"
@@ -17,6 +18,16 @@ function setTheme(theme){
     document.body.classList.toggle("theme-dark", isDark);
 }
 setTheme("dark");
+
+function addResumeButton(){
+    const resumeButton = document.createElement("a");
+    resumeButton.classList.add("resume-button");
+    resumeButton.href = "./resume.html";
+    resumeButton.textContent = "Resume";
+    resumeButton.setAttribute("aria-label", "Open resume page");
+    document.body.appendChild(resumeButton);
+}
+addResumeButton();
 
 function capitalize(str){
     return str.charAt(0).toUpperCase()+str.slice(1);
@@ -224,7 +235,12 @@ const projObjTemp = (parent,object)=>{
     genP(parent,'Title',object.title);
     genP(parent,'Description','');
     genBulletList(parent,object.description);
-    genLink(parent,'github',object.githubRepo);        
+
+    const projectLinks = document.createElement('div');
+    projectLinks.classList.add('projectLinks');
+    genLink(projectLinks,'github',object.githubRepo);
+    genLink(projectLinks,'deployment',object.deployment);
+    parent.appendChild(projectLinks);
    
 }
 

@@ -332,10 +332,40 @@ a{
     border-color: var(--accent-strong);
 }
 
+.resume-button{
+    position: fixed;
+    top: 1.25rem;
+    right: 8rem;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--muted-border);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--panel-color), var(--accent-soft));
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 0.75rem 2rem var(--shadow-soft);
+}
+
+.resume-button:hover{
+    border-color: var(--accent-strong);
+}
+
 @media(max-width: 800px){
     .theme-toggle{
         top: 0.75rem;
         right: 0.75rem;
+    }
+
+    .resume-button{
+        top: 0.75rem;
+        right: 6.75rem;
+        min-width: 5rem;
+        padding: 0.7rem 0.9rem;
     }
 
     .section-indicator{
@@ -373,11 +403,28 @@ a{
 .profileSocialLinks{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.9rem;
     margin-top: 10rem;
 }
 .profileSocialLinks p{
     margin: 0;
+    padding: 0;
+}
+.profileSocialLinks a{
+    color: var(--link-color);
+}
+.projectLinks{
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+.projectLinks p{
+    margin: 0;
+    padding: 0;
+}
+.projectLinks a{
+    color: var(--link-color);
 }
 .skills{
     justify-content: flex-start;

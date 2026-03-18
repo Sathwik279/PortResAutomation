@@ -32,15 +32,22 @@
             "title":"TodoRevamp",
             "description":["Developed a full-stack task management web application using React.js with responsive UI (HTML5, CSS3, JavaScript ES6),leveraging component-based architecture and efficient state management","Handled asynchronous API requests using Fetch API, processed JSON responses, and integrated RESTful services to inject AI-generated task suggestions via backend LLM model APIs.","Implemented JWT-based authentication and role-based access control using Spring Boot and deployed scalable backend services on Google Cloud Run."],
             "technologies":["React","Spring Boot","Google Cloud Run"],
-            "githubRepo":"https://github.com/Sathwik279/TodoApplication-Web-.git"
-        
+            "githubRepo":"https://github.com/Sathwik279/TodoApplication-Web-.git",
+            "deployment":"https://todo-frontend-44556.web.app/"
+        },
+        {
+            "title":"Portfolio and Resume Automation",
+            "description":["Built an automated portfolio and resume system using a single JSON file as the source of truth, generating both formats consistently while reducing manual update effort","Deployed the site with a GitHub Actions workflow and Firebase Hosting to streamline publishing and rewrites."],
+            "technologies":["Java Script","CSS","HTML"],
+            "githubRepo":"https://github.com/Sathwik279/Portfolio-website",
+            "deployment":"https://portfolio-resume-automation.web.app/index.html"
         },
         {
             "title":"Railway Seat Booking System",
             "description":["Engineered a train reservation system supporting multi-segment seat allocation across routes, dates, and weekday-based scheduling using optimized date computation logic.","Implemented transactional concurrency control using row-level and next-key locking under REPEATABLE READ isolation to prevent race conditions, phantom inserts, and seat overbooking."],
             "technologies":["Python","MySQL"],
-            "githubRepo":"https://github.com/Sathwik279/Railway_seat_booking_python_version.git"
-
+            "githubRepo":"https://github.com/Sathwik279/Railway_seat_booking_python_version.git",
+            "deployment":""
         }
     ],
     "experience":[
