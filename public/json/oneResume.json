@@ -2,12 +2,19 @@
     "profile":[
         {
             "Name":"Sudikonda Sri Srinivasa Sathwik",
+            "role":"Full stack Developer",
+            "roleDescription":"I build resilient and scalable full stack projects",
             "linkedin":"https://www.linkedin.com/in/sathwik-sudikonda/",
             "github":"https://github.com/Sathwik279",
             "image":"../images/sathwik.jpg",
             "email":"ssathwik31831@gmail.com",
             "ph":"9063246116",
             "portfolio":"https://portfolio-resume-automation.web.app/index.html"
+        }
+    ],
+    "about":[
+        {
+           "about":"I am an enthusiastic student who is interested in Solving real time problems and full stack development." 
         }
     ],
     "education":[
@@ -18,11 +25,6 @@
             "cgpa":"8.86",
             "location":"Vijayawada,India"
 
-        }
-    ],
-    "about":[
-        {
-           "about":"I am an enthusiastic student who is interested in Solving real time problems and full stack development." 
         }
     ],
     "projects":[

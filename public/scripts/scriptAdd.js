@@ -9,6 +9,9 @@ const iconMap = {
     'linkedin': 'fa-brands fa-linkedin',
     'github': 'fa-brands fa-github'
 };
+const sectionDisplayNames = {
+    contact: "CONTACT"
+};
 
 function setTheme(theme){
     const isDark = theme === "dark";
@@ -31,7 +34,7 @@ function createThemeToggle(){
 
     const updateLabel = () => {
         const isDark = document.body.classList.contains("theme-dark");
-        button.textContent = isDark ? "Switch to Day Mode" : "Switch to Night Mode";
+        button.textContent = isDark ? "Light" : "Dark";
     };
 
     button.addEventListener("click", () => {
@@ -68,13 +71,13 @@ const genH2 = (parent,label,value)=>{
 
     parent.appendChild(h2);
 }
-const genP = (parent,label,value)=>{
+const genP = (parent,label,value,classList)=>{
     if(value===undefined || value===null)return;
 
     const labelText = label? `<strong>${label} </strong>`:'';
     const p = document.createElement('p');
     p.innerHTML = `${labelText}${value}`;
-
+    if(classList!=undefined)p.classList.add(classList);
     parent.appendChild(p);
 }
 
@@ -133,50 +136,110 @@ const genLink = (parent,label,url)=>{
 }
 
 function generateNavLinks(data){
-    const navDiv = document.createElement("div");
-    navDiv.classList.add('nav-links');
+    if(!Array.isArray(data) || data.length === 0){
+        return;
+    }
 
-    const resumeLink = document.createElement('a');
-    resumeLink.href = './resume.html';
-    resumeLink.textContent = 'RESUME VIEW';
-    navDiv.appendChild(resumeLink);
+    const nav = document.createElement("nav");
+    nav.classList.add("section-indicator");
+    nav.setAttribute("aria-label", "Section navigation");
 
-    Object.keys(data).forEach((key)=>{
+    data.forEach((key, index) => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.classList.add("section-indicator__item");
+        item.dataset.target = key;
+        item.dataset.index = index;
+        item.setAttribute("aria-label", `Go to ${key} section`);
 
-        if(key==='about'||key==='projects'||key === 'profile'||key==='certifications'||key==='education'||key==='coding'||key==='achievements')return ;
+        const line = document.createElement("span");
+        line.classList.add("section-indicator__line");
 
-        const link = document.createElement('a');
-        link.href = `#${key}`;
-        link.textContent = key.toUpperCase();
+        const label = document.createElement("span");
+        label.classList.add("section-indicator__label");
+        label.textContent = key.toUpperCase();
 
-        navDiv.appendChild(link);
+        item.appendChild(line);
+        item.appendChild(label);
+        nav.appendChild(item);
     });
-    document.getElementById('sidebar').appendChild(navDiv);
-    document.getElementById('sidebar').appendChild(createThemeToggle());
+
+    sidebar.appendChild(nav);
+    setupSectionIndicator(data);
+}
+
+function setupSectionIndicator(sectionKeys){
+    const navItems = Array.from(document.querySelectorAll(".section-indicator__item"));
+    const sections = sectionKeys
+        .map((key) => document.getElementById(key))
+        .filter(Boolean);
+
+    if(navItems.length === 0 || sections.length === 0){
+        return;
+    }
+
+    const setActiveItem = (activeKey) => {
+        const activeIndex = sectionKeys.indexOf(activeKey);
+        if(activeIndex === -1){
+            return;
+        }
+
+        navItems.forEach((item, index) => {
+            const distance = Math.abs(index - activeIndex);
+            item.classList.toggle("is-active", distance === 0);
+            item.classList.toggle("is-near", distance === 1);
+            item.classList.remove("is-far");
+            item.setAttribute("aria-current", distance === 0 ? "true" : "false");
+        });
+    };
+
+    navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            const targetId = item.dataset.target;
+            const targetSection = document.getElementById(targetId);
+
+            if(!targetSection){
+                return;
+            }
+
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            setActiveItem(targetId);
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        const visibleEntries = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((first, second) => second.intersectionRatio - first.intersectionRatio);
+
+        if(visibleEntries.length > 0){
+            setActiveItem(visibleEntries[0].target.id);
+        }
+    }, {
+        root: content,
+        threshold: [0.35, 0.55, 0.75]
+    });
+
+    sections.forEach((section) => observer.observe(section));
+    setActiveItem(sectionKeys[0]);
 }
 
 const profObjTemp = (parent,object)=>{
+    const bioDetails = document.createElement('div');
+    bioDetails.classList.add('bioDetails')
+    genP(bioDetails,'',object['Name'],'name')
+    genP(bioDetails,'',object['role'],'role')
+    genP(bioDetails,'',object['roleDescription'],'roleDescription')
+    parent.appendChild(bioDetails)
+
     const socialDiv = document.createElement('div');
-    socialDiv.classList.add('social');
+    socialDiv.classList.add('profileSocialLinks');
     genLink(socialDiv,'linkedin',object['linkedin'])
     genLink(socialDiv,'github',object['github'])
-
-    // if(object.image){
-    //     const imgDiv = document.createElement('div');
-    //     imgDiv.innerHTML = `<img src="${object.image}" alt='hello' class='profile-pic'>`;
-    //     parent.appendChild(imgDiv)
-    // }
-        
-    const nameDiv = document.createElement('div');
-    nameDiv.classList.add('name')
-    genH2(nameDiv,'',object['Name'])
-    genLink(nameDiv,'email',object['email'])
-    genLink(nameDiv,'ph',object['ph'])
-    const nameAndSocialDiv = document.createElement('div')
-    nameAndSocialDiv.classList.add('nameAndSocial');
-    nameAndSocialDiv.appendChild(nameDiv)
-    nameAndSocialDiv.appendChild(socialDiv)
-    parent.appendChild(nameAndSocialDiv)
+    parent.appendChild(socialDiv)
 
 }
 
@@ -232,6 +295,12 @@ const achieveObjTemp = (parent,object)=>{
     genBulletP(parent,null,object.title)
 }
 
+const contactObjTemp = (parent,object)=>{
+    parent.classList.add('detail-card');
+    genP(parent,'Email',object.email);
+    genP(parent,'Phone',object.ph);
+}
+
 const registry = {
     'profile':profObjTemp,
     'about':aboutObjTemp,
@@ -241,7 +310,8 @@ const registry = {
     'projects':projObjTemp,
     'coding':codingObjTemp,
     'certifications':certifObjTemp,
-    'achievements':achieveObjTemp
+    'achievements':achieveObjTemp,
+    'contact':contactObjTemp
 }
 
 const rec = (input) => {
@@ -275,16 +345,25 @@ fetch('../json/oneResume.json')
         console.log('Error fetching json', error);
     })
 
+document.body.appendChild(createThemeToggle());
+
 const secLaydown = (input) => {
-    Object.keys(input).forEach((key) => {
+    const navSections = [];
+    const data = { ...input };
+
+    if(Array.isArray(input.profile) && input.profile.length > 0){
+        data.contact = [input.profile[0]];
+    }
+
+    Object.keys(data).forEach((key) => {
         const section = document.createElement('section');
         section.classList.add(key);
         section.id = key;
-        const arrOfObjects = input[key]; 
+        const arrOfObjects = data[key]; 
         const sectionHeading = document.createElement('h2');
         if(key!=='profile')
         {
-            sectionHeading.textContent = key.toUpperCase();
+            sectionHeading.textContent = sectionDisplayNames[key] || key.toUpperCase();
             section.appendChild(sectionHeading)
         }
         const objectsContainer = document.createElement('div');
@@ -294,17 +373,18 @@ const secLaydown = (input) => {
         section.appendChild(objectsContainer)
 
         //ignore section
-        if(key==='certifications'||key==='education'||key==='coding'){
+        if(key==='certifications'||key==='education'||key==='coding'||key==='skills'||key==='achievements'){
             return;
         }
         if(key=="profile"){
             sidebar.appendChild(section);
         }else{
             content.appendChild(section);
+            navSections.push(key);
         }
     });
 
-    generateNavLinks(input)
+    generateNavLinks(navSections)
 }
 
 function fillDetails(key,parent,arrOfObjects) {
