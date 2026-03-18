@@ -1,12 +1,13 @@
 {
     "profile":[
         {
-        "Name":"Sudikonda Sri Srinivasa Sathwik",
-        "linkedin":"https://www.linkedin.com/in/sathwik-sudikonda/",
-        "github":"https://github.com/Sathwik279",
-        "image":"../images/sathwik.jpg",
-        "email":"ssathwik31831@gmail.com",
-        "ph":"9063246116"
+            "Name":"Sudikonda Sri Srinivasa Sathwik",
+            "linkedin":"https://www.linkedin.com/in/sathwik-sudikonda/",
+            "github":"https://github.com/Sathwik279",
+            "image":"../images/sathwik.jpg",
+            "email":"ssathwik31831@gmail.com",
+            "ph":"9063246116",
+            "portfolio":"https:ex"
         }
     ],
     "education":[
@@ -19,17 +20,24 @@
 
         }
     ],
+    "about":[
+        {
+           "about":"I am an enthusiastic student who is interested in Solving real time problems and full stack development." 
+        }
+    ],
     "projects":[
         {
             "title":"TodoRevamp",
             "description":["Developed a full-stack task management web application using React.js with responsive UI (HTML5, CSS3, JavaScript ES6),leveraging component-based architecture and efficient state management","Handled asynchronous API requests using Fetch API, processed JSON responses, and integrated RESTful services to inject AI-generated task suggestions via backend LLM model APIs.","Implemented JWT-based authentication and role-based access control using Spring Boot and deployed scalable backend services on Google Cloud Run."],
+            "technologies":["React","Spring Boot","Google Cloud Run"],
             "githubRepo":"https://github.com/Sathwik279/TodoApplication-Web-.git"
         
         },
         {
-            "title":"Wiretest",
+            "title":"Railway Seat Booking System",
             "description":["Engineered a train reservation system supporting multi-segment seat allocation across routes, dates, and weekday-based scheduling using optimized date computation logic.","Implemented transactional concurrency control using row-level and next-key locking under REPEATABLE READ isolation to prevent race conditions, phantom inserts, and seat overbooking."],
-            "githubRepo":"https://github.com/Sathwik279/railway_seat_booking_java_version"
+            "technologies":["Python","MySQL"],
+            "githubRepo":"https://github.com/Sathwik279/Railway_seat_booking_python_version.git"
 
         }
     ],
@@ -38,7 +46,7 @@
             "role":"Application Developer Intern",
             "company":"DeepMedIQ",
             "description":["Developed an Android-based medical assistant application using Kotlin and Jetpack Compose following MVVM architecture principles"," Integrated REST APIs using Retrofit, implemented local data persistence with Room, and managed dependency injection using Hilt"],
-            "duration":"15/2/25 - 15/3/25",
+            "duration":"May 2025 - July 2025",
             "location":"Remote"
         }
     ],

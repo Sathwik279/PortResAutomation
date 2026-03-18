@@ -1,0 +1,246 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 16px 18px 28px;
+    background: #ffffff;
+    color: #111111;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 13.5px;
+    line-height: 1.22;
+}
+
+.resume-actions{
+    margin: 0 auto 12px;
+    max-width: 840px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-link,
+.print-button{
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #111111;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.print-button{
+    cursor: pointer;
+}
+
+#resumeRoot{
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.loading-state,
+.error-state{
+    text-align: center;
+    color: #555555;
+}
+
+.resume-header{
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.resume-name{
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.resume-contact{
+    margin-top: 4px;
+    font-size: 12.5px;
+}
+
+.resume-contact a,
+.entry-link{
+    color: #111111;
+    text-decoration: none;
+}
+
+.contact-row{
+    margin-top: 1px;
+}
+
+.section-heading{
+    margin: 11px 0 0;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.section-rule{
+    height: 1px;
+    background: #111111;
+    margin: 2px 0 6px;
+}
+
+.resume-entry{
+    margin-bottom: 8px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.entry-head,
+.entry-subline{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.entry-title{
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+.entry-meta,
+.entry-subline,
+.entry-link{
+    font-size: 12.5px;
+}
+
+.project-head{
+    align-items: baseline;
+}
+
+.project-main{
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.project-repo{
+    white-space: nowrap;
+}
+
+.project-tech{
+    font-size: 12.5px;
+    font-style: italic;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.bullet-list,
+.compact-list{
+    margin: 3px 0 0 16px;
+    padding: 0;
+}
+
+.bullet-list li,
+.compact-list li{
+    margin-bottom: 2px;
+}
+
+.two-column-list{
+    columns: 2;
+    column-gap: 24px;
+}
+
+.two-column-list li{
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.plain-lines{
+    display: grid;
+    gap: 2px;
+}
+
+@media (max-width: 720px){
+    body{
+        padding: 12px;
+    }
+
+    .resume-actions,
+    .entry-head,
+    .entry-subline{
+        display: block;
+    }
+
+    .entry-meta{
+        display: block;
+        margin-top: 2px;
+    }
+
+    .project-tech{
+        margin-top: 2px;
+        text-align: left;
+        white-space: normal;
+    }
+
+    .print-button{
+        margin-top: 8px;
+    }
+
+    .two-column-list{
+        columns: 1;
+    }
+}
+
+@media print{
+    @page{
+        size: A4;
+        margin: 10mm 11mm;
+    }
+
+    body{
+        padding: 0;
+        margin: 0;
+        background: #ffffff;
+        color: #000000;
+        font-size: 11.5pt;
+        line-height: 1.18;
+    }
+
+    .resume-actions{
+        display: none;
+    }
+
+    #resumeRoot{
+        max-width: none;
+        margin: 0;
+    }
+
+    .resume-name{
+        font-size: 21pt;
+    }
+
+    .resume-contact,
+    .entry-meta,
+    .entry-subline,
+    .entry-link,
+    .project-tech{
+        font-size: 10.8pt;
+    }
+
+    .section-heading{
+        font-size: 11.5pt;
+        margin-top: 10px;
+    }
+
+    .entry-title{
+        font-size: 11pt;
+    }
+
+    .bullet-list,
+    .compact-list{
+        margin-left: 14px;
+    }
+}

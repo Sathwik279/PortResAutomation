@@ -6,47 +6,104 @@
     box-sizing: border-box;
 }
 
+:root{
+    --bg-color: #fff8fc;
+    --panel-color: #ffffff;
+    --text-color: #24131f;
+    --muted-border: rgba(190, 15, 146, 0.332);
+    --accent-border: rgba(235, 56, 148, 0.627);
+    --accent-soft: rgba(235, 56, 148, 0.08);
+    --accent-strong: rgba(195, 91, 148, 0.655);
+    --tag-hover: rgb(10, 200, 35);
+    --sidebar-border: rgba(235, 56, 148, 0.35);
+    --scroll-track: rgba(225, 149, 191, 0.15);
+    --scroll-thumb: rgba(195, 91, 148, 0.8);
+    --shadow-soft: rgba(235, 56, 148, 0.25);
+    --link-color: #8d145d;
+}
+
+body.theme-dark{
+    --bg-color: #0f1117;
+    --panel-color: #171a22;
+    --text-color: #f4eaf1;
+    --muted-border: rgba(255, 132, 206, 0.35);
+    --accent-border: rgba(255, 132, 206, 0.55);
+    --accent-soft: rgba(255, 132, 206, 0.12);
+    --accent-strong: rgba(255, 170, 219, 0.72);
+    --tag-hover: rgb(83, 226, 140);
+    --sidebar-border: rgba(255, 132, 206, 0.28);
+    --scroll-track: rgba(255, 255, 255, 0.08);
+    --scroll-thumb: rgba(255, 132, 206, 0.75);
+    --shadow-soft: rgba(0, 0, 0, 0.45);
+    --link-color: #ffb6de;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
 body{
-    border:2px dashed slateblue;
+    margin:0;
+    padding:0;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.layout{
+    display:grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    height: 100vh;
+}
+
+@media(max-width: 768px){
+    .layout{
+        display:grid;
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    #sidebar,
+    #content{
+        overflow: visible;
+        height: auto;
+        margin: 0;
+    }
+
+    #sidebar{
+        border-radius: 0;
+    }
+}
+
+#sidebar{
+    overflow-y: auto;
+    border: 2px solid var(--sidebar-border);
     border-radius: 1em;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-left:7rem;
-    padding-right:7rem;
-    margin:3em;
+    padding: 1em;
+    margin: 1em;
+    background: var(--panel-color);
 }
 
-
-h1{
-    border:2px solid salmon;
-    border-radius: 1em;
-    padding:0.5em;
-    background-color: rgba(229, 150, 200, 0.275);
-    width: 600px;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-
+#content{
+    overflow-y: auto;
+    padding: 1em;
+    background: var(--bg-color);
 }
-
-h1:hover{
-    box-shadow: 0.5em 0.5em;
-}
-
 
 h2{
+    border: 2px dashed transparent;
     text-align: center;
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    margin:5px;
 }
 
-h2:hover{
-    border:2px dashed salmon;
+section:hover > h2,
+section:focus-within > h2{
+    border:2px dashed var(--accent-strong);
     border-radius: 0.7em;
-    transform: translateY(-3px);
-    box-shadow: 0.3em 0.3em rgba(235, 56, 148, 0.627);
 }
 
+.profile h2{
+    text-align: left;
+}
 
 section{
     display:flex;
@@ -60,27 +117,60 @@ section{
     width:100%;
 }
 
+.detail-card{
+    border: 1px solid var(--muted-border);
+    border-radius: 1.25rem;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+}
 
 .object p,.object h3{
     line-height: 1.8;
 }
 
+.detail-card p{
+    margin: 0 0 0.55rem;
+}
+
+.detail-list{
+    margin: 0.25rem 0 0.9rem 1.1rem;
+    padding: 0;
+}
+
+.detail-list li{
+    line-height: 1.8;
+    margin-bottom: 0.55rem;
+}
+
 strong{
-    border:2px solid rgba(190, 15, 146, 0.332);
+    border:2px solid var(--muted-border);
     border-radius: 0.7em;
     margin-right:0.4em;
     font-size:1em;
     font-weight: 800;
-    transition: transform 0.2s ease, box-shadow 0.6s ease;
-
 }
 
-p:hover{
-    strong{
-        border:3px dashed rgb(10, 200, 35);
-        box-shadow: 0.3em 0.3em;
+.object h3{
+    border: 2px dashed transparent;
+    border-radius: 0.7em;
+}
 
-    }
+a{
+    text-decoration: none;
+    font-size: 0.8em;
+    border: 2px solid var(--accent-strong);
+    margin-bottom: 5px;
+    border-radius: 0.7em;
+    color: var(--link-color);
+}
+
+.object:hover strong,
+.object:focus-within strong,
+.skills:hover strong,
+.skills:focus-within strong,
+.object:hover > h2,
+.object:focus-within > h2{
+    border:3px dashed var(--tag-hover);
 }
 
 .social{
@@ -89,10 +179,12 @@ p:hover{
     padding-top:0px;
     margin-top:0px;
 }
+
 .social p{
     padding-top:0px;
     margin-top:0px;
 }
+
 .name p{
     margin-bottom: 0px;
 }
@@ -100,22 +192,19 @@ p:hover{
 .profile-pic {
     width: 5rem;
     height: 5rem;
-    border-radius: 50%; /* Makes it a circle */
-    object-fit: cover; /* Ensures the image doesn't stretch */
-    border: 3px solid rgba(190, 15, 146, 0.5); /* Matches your strong tag border */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--muted-border);
     margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(106, 90, 205, 0.2);
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
-
 }
+
 .profile-pic:hover {
     width: 5rem;
     height: 5rem;
-    border-radius: 50%; /* Makes it a circle */
-    object-fit: cover; /* Ensures the image doesn't stretch */
-    border: 3px solid rgba(24, 151, 190, 0.5); /* Matches your strong tag border */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-strong);
     margin-bottom: 10px;
-    box-shadow: 0.4em 0.4em 400em 2em rgb(215, 98, 159);
 }
 
 .profile .object{
@@ -128,31 +217,74 @@ p:hover{
     grid-template-columns: 2fr 2fr 2fr;
 }
 
-.profile p{
-    margin-top:0px;
+.profile p, .education p{
+    margin:0px;
 }
 
 .skills p, .certifications p,.achievements p{
     margin: 0px;
 }
 
-.achievements p, .certifications p{
-    border: 2px solid rgba(225, 149, 191, 0.425);
-    border-radius: 0.5em;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.skills,.achievements{
+    margin-bottom:1rem; 
+}
 
+.projects .objectsContainer,
+.experience .objectsContainer{
+    width: 100%;
+}
+
+.achievements p, .certifications p{
+    border: 2px solid var(--muted-border);
+    border-radius: 0.5em;
+    background: var(--panel-color);
 }
 
 .achievements p:hover, .certifications p:hover{
-    border: 2px solid rgba(195, 91, 148, 0.655);
+    border: 2px solid var(--accent-strong);
     border-radius: 0.7em;
-    transform: translateY(-3px);
-    box-shadow: 0.3em 0.3em rgba(235, 56, 148, 0.627);
 }
-
-
 
 .certifications .objectsContainer{
     display:grid;
     grid-template-columns: 2fr 2fr;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-toggle{
+    width: 100%;
+    border: 1px solid var(--muted-border);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--panel-color), var(--accent-soft));
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+}
+
+.theme-toggle:hover{
+    border-color: var(--accent-strong);
+}
+
+#sidebar::-webkit-scrollbar,
+#content::-webkit-scrollbar{
+    width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-track,
+#content::-webkit-scrollbar-track{
+    background: var(--scroll-track);
+    border-radius: 999px;
+}
+
+#sidebar::-webkit-scrollbar-thumb,
+#content::-webkit-scrollbar-thumb{
+    background: var(--scroll-thumb);
+    border-radius: 999px;
 }
