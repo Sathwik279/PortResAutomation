@@ -1,7 +1,6 @@
 // global reusables
 const content = document.getElementById("content")
 const sidebar = document.getElementById("sidebar")
-const themeStorageKey = "portfolio-theme"
 const iconMap = {
     'name': 'fa-solid fa-user',
     'email': 'fa-solid fa-envelope',
@@ -17,38 +16,7 @@ function setTheme(theme){
     const isDark = theme === "dark";
     document.body.classList.toggle("theme-dark", isDark);
 }
-
-function getPreferredTheme(){
-    const savedTheme = localStorage.getItem(themeStorageKey);
-    if(savedTheme){
-        return savedTheme;
-    }
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "dark" : "light";
-}
-
-function createThemeToggle(){
-    const button = document.createElement("button");
-    button.type = "button";
-    button.classList.add("theme-toggle");
-
-    const updateLabel = () => {
-        const isDark = document.body.classList.contains("theme-dark");
-        button.textContent = isDark ? "Light" : "Dark";
-    };
-
-    button.addEventListener("click", () => {
-        const nextTheme = document.body.classList.contains("theme-dark") ? "light" : "dark";
-        setTheme(nextTheme);
-        localStorage.setItem(themeStorageKey, nextTheme);
-        updateLabel();
-    });
-
-    updateLabel();
-    return button;
-}
-
-setTheme(getPreferredTheme());
+setTheme("dark");
 
 function capitalize(str){
     return str.charAt(0).toUpperCase()+str.slice(1);
@@ -344,8 +312,6 @@ fetch('../json/oneResume.json')
     .catch(error => {
         console.log('Error fetching json', error);
     })
-
-document.body.appendChild(createThemeToggle());
 
 const secLaydown = (input) => {
     const navSections = [];
