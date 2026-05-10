@@ -1,0 +1,60 @@
+[debug] [2026-04-28T17:49:41.689Z] ----------------------------------------------------------------------
+[debug] [2026-04-28T17:49:41.693Z] Command:       /home/sathwik/.nvm/versions/node/v24.14.1/bin/node /home/sathwik/.nvm/versions/node/v24.14.1/bin/firebase deploy
+[debug] [2026-04-28T17:49:41.693Z] CLI Version:   15.15.0
+[debug] [2026-04-28T17:49:41.693Z] Platform:      linux
+[debug] [2026-04-28T17:49:41.693Z] Node Version:  v24.14.1
+[debug] [2026-04-28T17:49:41.694Z] Time:          Tue Apr 28 2026 23:19:41 GMT+0530 (India Standard Time)
+[debug] [2026-04-28T17:49:41.694Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-28T17:49:42.979Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-28T17:49:42.980Z] > authorizing via signed-in user (ssathwik31831@gmail.com)
+[debug] [2026-04-28T17:49:42.980Z] [iam] checking project nodal-subset-494713-k4 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-28T17:49:42.981Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:42.981Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:42.983Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4:testIamPermissions [none]
+[debug] [2026-04-28T17:49:42.983Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4:testIamPermissions  x-goog-user-project=nodal-subset-494713-k4
+[debug] [2026-04-28T17:49:42.983Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-28T17:49:45.414Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4:testIamPermissions 200
+[debug] [2026-04-28T17:49:45.414Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-28T17:49:45.415Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:45.415Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:45.415Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nodal-subset-494713-k4 [none]
+[debug] [2026-04-28T17:49:46.533Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nodal-subset-494713-k4 404
+[debug] [2026-04-28T17:49:46.533Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nodal-subset-494713-k4 {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2026-04-28T17:49:46.534Z] Couldn't get project info from firedata for nodal-subset-494713-k4, trying resource manager. Original error: FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/nodal-subset-494713-k4 had HTTP Error: 404, Requested entity was not found.
+[debug] [2026-04-28T17:49:46.535Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:46.535Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:46.535Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 [none]
+[debug] [2026-04-28T17:49:47.249Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 200
+[debug] [2026-04-28T17:49:47.249Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 {"projectNumber":"565603794256","projectId":"nodal-subset-494713-k4","lifecycleState":"ACTIVE","name":"PortResAutomation","createTime":"2026-04-28T13:42:18.542Z"}
+[debug] [2026-04-28T17:49:47.250Z] the default site does not exist on the Firebase project; asking Hosting.
+[debug] [2026-04-28T17:49:47.250Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:47.250Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:47.251Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/nodal-subset-494713-k4/sites pageToken=&pageSize=10
+[debug] [2026-04-28T17:49:48.882Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/nodal-subset-494713-k4/sites 200
+[debug] [2026-04-28T17:49:48.882Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/nodal-subset-494713-k4/sites {}
+[info] i  No Hosting site detected. 
+[debug] [2026-04-28T17:49:48.884Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:48.884Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:48.884Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 [none]
+[debug] [2026-04-28T17:49:49.502Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 200
+[debug] [2026-04-28T17:49:49.502Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/nodal-subset-494713-k4 {"projectNumber":"565603794256","projectId":"nodal-subset-494713-k4","lifecycleState":"ACTIVE","name":"PortResAutomation","createTime":"2026-04-28T13:42:18.542Z"}
+[debug] [2026-04-28T17:49:49.502Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:49.503Z] Checked if tokens are valid: true, expires at: 1777401252414
+[debug] [2026-04-28T17:49:49.503Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/565603794256/sites siteId=nodal-subset-494713-k4&validateOnly=true
+[debug] [2026-04-28T17:49:49.503Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/565603794256/sites {"appId":""}
+[debug] [2026-04-28T17:49:50.424Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/565603794256/sites 200
+[debug] [2026-04-28T17:49:50.424Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/565603794256/sites {"name":"projects/565603794256/sites/nodal-subset-494713-k4","defaultUrl":"https://nodal-subset-494713-k4.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-04-28T17:50:00.350Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (/home/sathwik/.nvm/versions/node/v24.14.1/lib/node_modules/firebase-tools/node_modules/@inquirer/core/dist/commonjs/lib/create-prompt.js:101:37)
+    at Interface.emit (node:events:508:28)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1327:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:284:20)
+    at ReadStream.emit (node:events:520:35)
+    at emitKeys (node:internal/readline/utils:371:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+    at ReadStream.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:563:12)
+[error] 
+[error] Error: An unexpected error has occurred.

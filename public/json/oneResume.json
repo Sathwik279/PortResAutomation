@@ -6,10 +6,10 @@
             "roleDescription":"I build resilient and scalable full stack Applications",
             "linkedin":"https://www.linkedin.com/in/sathwik-sudikonda/",
             "github":"https://github.com/Sathwik279",
-            "image":"../images/sathwik.jpg",
             "email":"ssathwik31831@gmail.com",
             "ph":"9063246116",
-            "portfolio":"https://portfolio-resume-automation.web.app/index.html"
+            "portfolio":"https://portfolio-resume-automation.web.app/index.html",
+            "imageSettings": { "posX": 50, "posY": 50, "zoom": 100, "radius": 50 }
         }
     ],
     "about":[
@@ -36,11 +36,15 @@
             "deployment":"https://todo-frontend-44556.web.app/"
         },
         {
-            "title":"Portfolio and Resume Automation",
-            "description":["Built an automated portfolio and resume system using a single JSON file as the source of truth, generating both formats consistently while reducing manual update effort","Deployed the site with a GitHub Actions workflow and Firebase Hosting to streamline publishing and rewrites."],
-            "technologies":["Java Script","CSS","HTML"],
-            "githubRepo":"https://github.com/Sathwik279/Portfolio-website",
-            "deployment":"https://portfolio-resume-automation.web.app/index.html"
+            "title": "Portfolio and Resume Automation",
+            "description": [
+                "Engineered a 'Single Source of Truth' system that programmatically generates synchronized portfolios and resumes from a unified JSON schema.",
+                "Architected a hybrid-cloud dashboard (React/Firebase) that orchestrates dynamic deployments via a secure Cloud Run publishing engine.",
+                "Implemented a 'Photo Studio' for real-time headshot optimization and a version-controlled system for secure metadata management."
+            ],
+            "technologies": ["React", "Node.js", "Firebase", "TiDB (MySQL)", "GCP"],
+            "githubRepo": "https://github.com/Sathwik279/PortResAutomation",
+            "deployment": "https://portresautomation-dashboard.web.app/"
         },
         {
             "title":"Railway Seat Booking System",

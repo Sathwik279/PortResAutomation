@@ -1,1 +1,5 @@
 images
+backend/.venv/
+backend/local_configs.db
+frontend/dist/
+frontend/node_modules/

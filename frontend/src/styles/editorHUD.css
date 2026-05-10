@@ -1,0 +1,72 @@
+/* Portfolio Editor HUD (Flexbox Overhaul) */
+.editable-controls {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #182231;
+  border: 1px solid #ff6fb1;
+  border-radius: 12px;
+  padding: 8px 16px;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.editable-wrapper:hover .editable-controls {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.spacing-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.spacing-controls:first-of-type {
+  border-left: none;
+}
+
+.control-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  background: #ff6fb1;
+  border-color: #ff6fb1;
+  color: #0b0f14;
+}
+
+.control-label {
+  font-size: 9px;
+  font-weight: 900;
+  color: #ff6fb1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.editable-controls input[type="range"] {
+  cursor: pointer;
+  height: 4px;
+  width: 80px;
+}
